@@ -1,0 +1,27 @@
+# testing
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["tests/*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+# formatting
+[tool.black]
+line-length = 91
+exclude = '''
+/(
+    venv
+  | migrations
+)/
+'''
+
+# linting
+[tool.ruff]
+line-length = 91
+exclude = [
+    "venv/",
+    "migrations/",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
