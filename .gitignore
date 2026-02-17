@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+env/
+.env/
+
+# Environment variables (sensitive!)
+.env
+# .env.*
+
+# Django
+*.sqlite3
+/staticfiles/
+/mediafiles/
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Qodo
+.qodo/
+
+# Ruff / Black
+.ruff_cache/
