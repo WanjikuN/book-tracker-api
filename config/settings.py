@@ -40,14 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     # third party
-    'rest_framework',
-    'corsheaders',
-    'rest_framework_simplejwt.token_blacklist',
-
+    "rest_framework",
+    "corsheaders",
+    "rest_framework_simplejwt.token_blacklist",
     # local
-    'book_tracker.apps.BookTrackerConfig',
+    "book_tracker.apps.BookTrackerConfig",
 ]
 
 MIDDLEWARE = [
@@ -134,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'book_tracker.User'
+AUTH_USER_MODEL = "book_tracker.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
