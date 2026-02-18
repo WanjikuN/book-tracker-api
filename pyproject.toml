@@ -12,6 +12,7 @@ exclude = '''
 /(
     venv
   | migrations
+  | book_tracker/migrations/
 )/
 '''
 
@@ -21,6 +22,7 @@ line-length = 91
 exclude = [
     "venv/",
     "migrations/",
+    "book_tracker/migrations/"
 ]
 
 [tool.ruff.lint]

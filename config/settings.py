@@ -40,14 +40,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     # third party
-    'rest_framework',
-    'corsheaders',
-    'rest_framework_simplejwt.token_blacklist',
-
+    "rest_framework",
+    "corsheaders",
+    "rest_framework_simplejwt.token_blacklist",
+    "drf_spectacular",
     # local
-    'book_tracker.apps.BookTrackerConfig',
+    "book_tracker.apps.BookTrackerConfig",
 ]
 
 MIDDLEWARE = [
@@ -95,8 +94,70 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
+# config/settings.py
+
+# config/settings.py
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Book Tracker API",
+    "DESCRIPTION": """
+    A REST API for managing your personal reading list and book tracking.
+
+    Features include:
+    - User registration and JWT authentication
+    - User profile management with reading goals
+    - Track books read throughout the year
+    - Reading statistics and progress tracking
+    - Custom user profiles with bios and profile pictures
+    
+    Authentication uses JWT tokens with HS256 algorithm.
+    """,
+    "VERSION": "v1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    # Contact & License
+    "CONTACT": {
+        "name": "Patricia Njoroge",
+        "email": "wanjikunpatricia@gmail.com",
+    },
+    "LICENSE": {
+        "name": "MIT",
+    },
+    # Schema configuration
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SCHEMA_PATH_PREFIX": r"/api/",
+    # JWT Bearer Authentication (HS256)
+    "APPEND_COMPONENTS": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "description": "Enter your JWT access token in the format: Bearer <token>",
+            }
+        }
+    },
+    # Apply Bearer auth globally
+    "SECURITY": [{"Bearer": []}],
+    # Swagger UI customization
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": False,
+        "filter": True,
+        "docExpansion": "none",
+    },
+    # API Tags
+    "TAGS": [
+        {
+            "name": "Authentication",
+            "description": "User registration, login, profile management, and logout",
+        },
+        {"name": "Books", "description": "Book management endpoints (coming soon)"},
+    ],
+}
 WSGI_APPLICATION = "config.wsgi.application"
 
 # sliding session pattern
@@ -134,7 +195,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'book_tracker.User'
+AUTH_USER_MODEL = "book_tracker.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
