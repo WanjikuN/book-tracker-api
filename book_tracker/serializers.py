@@ -56,6 +56,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
+
         validated_data.pop("password_confirm")  # remove confirmation field
         user = User.objects.create_user(**validated_data)  # hashes password
         return user
